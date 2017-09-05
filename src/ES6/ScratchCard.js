@@ -9,6 +9,9 @@ class ScratchCard extends Global {
         this.coverColor = options.coverColor || '#b5b5b5';
 
         this._dragging = false;
+        
+        this.ratio = options.ratio || .8;
+        this.callback = options.callback || null;
     };
 
     /**
@@ -45,6 +48,26 @@ class ScratchCard extends Global {
         )
     }
 
+    calcArea(context, callback, ratio) {
+        var pixels = context.getImageData(0, 0, context.canvas.width, context.canvas.height);
+        var transPixels = [];
+        this._forEach(pixels.data, function(item, i) {
+            var pixel = pixels.data[i + 3];
+            if (pixel === 0) {
+                transPixels.push(pixel);
+            }
+        });
+        if (transPixels.length / pixels.data.length > ratio) {
+            callback && typeof callback === 'function' && callback();
+        }
+    }
+
+    _forEach(items, callback) {
+        return Array.prototype.forEach.call(items, function(item, idx) {
+            callback(item, idx);
+        });
+    }
+
     render(canvas, context) {
         this.drawCover(context);
         this.drawAwardBackgroundImage(canvas);
@@ -71,6 +94,9 @@ class ScratchCard extends Global {
         ['touchend', 'mouseup'].forEach((event) => {
             canvas.addEventListener(event, (e) => {
                 this._dragging = false;
+                if (this.callback && typeof this.callback === 'function') {
+                    this.calcArea.call(this, context, this.callback, this.ratio);
+                }
             })
         });
     }
