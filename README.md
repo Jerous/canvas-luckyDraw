@@ -239,4 +239,4 @@ button.addEventListener('click', function (e) {
 | eraserSize | 否 | *String* | 控制橡皮擦的半徑大小，單位 px | 15 |
 | coverColor | 否 | *String* | 控製表面塗層的顏色 | #B5B5B5 |
 | ratio | 否 | *Number* | 刮開面積佔總面積的多少比例後，會觸發callback。值在0到1之間 | 0.8 |
-| callback | 否 | *Function* | 在刮開面積佔總面積的比例超過設定值時觸發，亦可作為一個獨立的參數存在。回調函數內可以調用this.clearCover()方法清除掉刮開層的所有像素。 | null |
+| callback | 否 | *Function* | 在刮開面積佔總面積的比例超過設定值時觸發，亦可作為一個獨立的參數存在。 | null |
