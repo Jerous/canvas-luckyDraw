@@ -236,10 +236,10 @@ class Sudoku extends Global {
         context.fillStyle = this.buttonTxtColor;
         context.font = this.BUTTON_TXT_SIZE;
         context.translate(
-            x + this.BUTTON_SIZE / 2 - context.measureText('立即抽奖').width / 2, 
+            x + this.BUTTON_SIZE / 2 - context.measureText('立刻抽獎').width / 2, 
             y + this.BUTTON_SIZE / 2 + 10
         );
-        context.fillText('立即抽奖', 0, 0);
+        context.fillText('立刻抽獎', 0, 0);
         context.restore();
         // -----
 

@@ -5,14 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>大转盘</title>
+    <title>幸運大轉盤</title>
 </head>
 
 <body>
-    <a href="https://github.com/Musiky/canvas-luckyDraw" class="fork">
-        <img style="position: absolute; top: 0; left: 0; border: 0;" src="./src/images/fork-me.png" alt="">
-    </a>
-
     <canvas id="canvas" width="500" height="500">
         Canvas not supported
     </canvas>
@@ -23,34 +19,34 @@
     var canvas = document.getElementById('canvas'),
         context = canvas.getContext('2d');
 
-    new RouletteWheel({
-        centerX:       canvas.width / 2,
-        centerY:       canvas.height / 2,
-        outsideRadius: 200,
-
-        awards: [
-            {type: 'text', content: 'iphone8'},
-            {type: 'text', content: '大保健'},
-            {type: 'text', content: '10元话费'},
-            {type: 'image', content: 'https://img12.360buyimg.com/n7/jfs/t4807/209/1436278963/496606/8e486549/58f0884eNcec87657.jpg'},
-            {type: 'losing', content: '未中奖'}
-        ],
-
-        finish: function (index) {
-            switch(this.awards[index].type) {
-                case 'text':
-                    alert('🎉恭喜您中得：' + this.awards[index].content);
-                    break;
-                case 'image':
-                    alert('🎉恭喜您中得：战争磨坊水冷机箱');
-                    break;
-                case 'losing':
-                    alert('💔很遗憾，您没有中奖~');
-                    break;
-            }
-        }
-        
-    }).render(canvas, context);
+        new RouletteWheel({
+            centerX: canvas.width / 2,
+            centerY: canvas.height / 2,
+            outsideRadius: 200,
+    
+            awards: [
+                {type: 'text', content: 'iphone8'},
+                {type: 'text', content: '大保健'},
+                {type: 'text', content: '10元話費'},
+                {type: 'image', content: 'https://img12.360buyimg.com/n7/jfs/t4807/209/1436278963/496606/8e486549/58f0884eNcec87657.jpg'},
+                {type: 'losing', content: '未中獎'}
+            ],
+    
+            finish: function (index) {
+                switch(this.awards[index].type) {
+                    case 'text':
+                        alert('🎉恭喜您中得：' + this.awards[index].content);
+                        break;
+                    case 'image':
+                        alert('🎉恭喜您中得：戰爭磨坊水冷機箱');
+                        break;
+                    case 'losing':
+                        alert('💔很遺憾，您沒有中獎~');
+                        break;
+                }
+            }
+            
+        }).render(canvas, context);
 
 </script>
 

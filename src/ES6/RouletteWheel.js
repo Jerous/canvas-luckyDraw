@@ -13,7 +13,7 @@ class RouletteWheel extends Global {
 
         this.arrowColorFrom = options.arrowColorFrom   || '#FFFC95';
         this.arrowColorTo = options.arrowColorTo       || '#FF9D37';
-        this.buttonFont = options.buttonFont           || '开始抽奖';
+        this.buttonFont = options.buttonFont           || '開始抽獎';
         this.buttonFontColor = options.buttonFontColor || '#88411F';
         this.buttonColorFrom = options.buttonColorFrom || '#FDC964';
         this.buttonColorTo = options.buttonColorTo     || '#FFCB65';
