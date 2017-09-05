@@ -1,7 +1,14 @@
 ## 更新日誌：
-> v0.01
+> v0.04
 
-* 首次提交
+* 刮刮卡增加 `ratio` 屬性，該屬性默認 `.8` 值，就是刮超過這個比例後會觸發callback函式。
+* 刮刮卡增加 `callback` 屬性，是一個回調函式。
+
+<br>
+
+> v0.03
+
+* 九宮格引入 `hasButton` 屬性；該屬性默認為 'true'，若設置成 'false'，將不再繪製默認的抽獎按鈕；用戶可通過對象的 `luckyDraw()` 方法，定制抽獎按鈕。
 
 <br>
 
@@ -15,15 +22,14 @@
 
 <br>
 
-> v0.03
+> v0.01
 
-* 九宮格引入 `hasButton` 屬性；該屬性默認為 'true'，若設置成 'false'，將不再繪製默認的抽獎按鈕；用戶可通過對象的 `luckyDraw()` 方法，定制抽獎按鈕。
-
+* 首次提交
 
 <br>
 
 ## 引入：
-> [下載](https://github.com/Musiky/canvas-luckyDraw/blob/master/src/dist/luckyDraw.min.js) `luckyDraw.min.js` 並引入。不依賴任何第三方庫
+> [下載](https://github.com/Jerous/canvas-luckyDraw/blob/master/src/dist/luckyDraw.min.js) `luckyDraw.min.js` 並引入。不依賴任何第三方庫
 
 ``` html
 <script src="./src/dist/luckyDraw.min.js"></script>
