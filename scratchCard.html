@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>刮刮卡</title>
+    <style>
+        #canvas {
+            cursor: url('img/icon.png') 0 80, auto;
+        }
+    </style>
 </head>
 <body>
     <canvas id="canvas" width="600" height="120">
@@ -16,7 +21,6 @@
 <script>
     var canvas = document.getElementById('canvas'),
         context = canvas.getContext('2d');
-
     new ScratchCard({
         style: 'margin-top: 150px',
         awardBackgroundImage: 'http://tse3.mm.bing.net/th?id=OIP.X7zblF16pKGur6refGZsWQEsDg&pid=15.1',
@@ -27,5 +31,11 @@
             context.clearRect(0, 0, context.canvas.width, context.canvas.height);
         }
     }).render(canvas, context);
+
+    context.fillStyle = "blue"; //文字颜色
+    context.font = "30px '宋体'"; //文字大小及字体
+    context.textAlign = "left";
+    context.textBaseline = "top";
+    context.fillText("abcABC汉字",20,30,100);
 </script>
 </html>

@@ -28,6 +28,24 @@ class ScratchCard extends Global {
     };
 
     /**
+     * 绘制刮涂层
+     * @param {Obj} context 
+     */
+    drawIcon(context) {
+        context.save();
+        context.fillStyle = '#ffff00';
+        context.beginPath();
+        context.moveTo(100, 200);
+        context.lineTo(350, 200);
+        context.bezierCurveTo(400, 200, 400, 100, 350, 100);
+        context.bezierCurveTo(350, 20, 220, 20, 210, 80);
+        context.bezierCurveTo(210, 80, 150, 50, 120, 120);
+        context.bezierCurveTo(120, 120, 50, 140,100, 200);
+        context.fill();
+        context.restore();
+    };
+
+    /**
      * 绘制橡皮擦
      * @param {Obj} context 
      * @param {Obj} loc 
@@ -70,6 +88,7 @@ class ScratchCard extends Global {
 
     render(canvas, context) {
         this.drawCover(context);
+        this.drawIcon(context);
         this.drawAwardBackgroundImage(canvas);
 
         ['touchstart', 'mousedown'].forEach((event) => {
