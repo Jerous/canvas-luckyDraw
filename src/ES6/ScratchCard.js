@@ -12,6 +12,7 @@ class ScratchCard extends Global {
         
         this.ratio = options.ratio || .8;
         this.callback = options.callback || null;
+        this.isMobile = options.isMobile || false;
     };
 
     /**
@@ -50,10 +51,14 @@ class ScratchCard extends Global {
      * @param {Obj} context 
      * @param {Obj} loc 
      */
-    drawEraser(context, loc) {
+    drawEraser(context, loc, isMobile) {
         context.save();
         context.beginPath();
-        context.arc(loc.x, loc.y, this.eraserSize, 0, Math.PI * 2, false);
+        if (isMobile) {
+            context.arc(loc.x*2, loc.y*2, this.eraserSize*2, 0, Math.PI * 2, false);
+        } else {
+            context.arc(loc.x, loc.y, this.eraserSize, 0, Math.PI * 2, false);
+        }
         context.clip();
         context.clearRect(0, 0, context.canvas.width, context.canvas.height);
         context.restore();
@@ -87,15 +92,15 @@ class ScratchCard extends Global {
     }
 
     render(canvas, context) {
-        this.drawCover(context);
-        this.drawIcon(context);
+        // this.drawCover(context);
+        // this.drawIcon(context);
         this.drawAwardBackgroundImage(canvas);
 
         ['touchstart', 'mousedown'].forEach((event) => {
             canvas.addEventListener(event, (e) => {
                 let loc = super.windowToCanvas(canvas, e);
                 this._dragging = true;
-                this.drawEraser(context, loc);
+                this.drawEraser(context, loc, this.isMobile);
             })
         });
 
@@ -104,7 +109,7 @@ class ScratchCard extends Global {
                 let loc;
                 if (this._dragging) {
                     loc = super.windowToCanvas(canvas, e);
-                    this.drawEraser(context, loc);
+                    this.drawEraser(context, loc, this.isMobile);
                 }
             })
         });
