@@ -6,7 +6,7 @@ const uglify =  require('gulp-uglify');
 const rename =  require('gulp-rename');
 
 // ----- 创建服务器
-gulp.task('webserver', () =>
+gulp.task('connect', () =>
     connect.server({
         livereload: true,
         port: 2333
@@ -25,13 +25,17 @@ gulp.task('minifyjs', () => {
         .pipe(rename({suffix: '.min'}))  // 重命名
 
         .pipe(gulp.dest('src/dist'))     // 输出到 dist 文件夹
+        .pipe(connect.reload());
 });
 // -----
-
-
-gulp.task('default', ['webserver'], () => {
+gulp.task('watch',function(){
     gulp.watch('./src/ES6/*.js', ['minifyjs'])
 });
+
+gulp.task('default', [
+    'connect',
+    'watch'
+]);
 
 
 
